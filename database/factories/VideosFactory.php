@@ -24,7 +24,7 @@ class VideosFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'photo' => $this->faker->imageUrl,
-            'video_url' => $this->faker->url,
+            'video' => $this->faker->url,
             'category_id' => Category::factory(),
         ];
     }
