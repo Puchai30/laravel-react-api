@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('/videos', [VideosController::class, 'index']);
+Route::get('videos/search', [VideosController::class, 'index']);
 Route::get('/videos/{slug}', [VideosController::class, 'show']);
 Route::post('/videos/store', [VideosController::class, 'store']);
 Route::patch('/videos/{slug}', [VideosController::class, 'update']);

@@ -19,7 +19,7 @@ class VideosController extends Controller
     public function index()
     {
         try {
-            return Videos::filter(request(['category', 'tags']))->paginate(10);
+            return Videos::filter(request(['category', 'tags', 'search']))->paginate(10);
         } catch (Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
@@ -107,8 +107,6 @@ class VideosController extends Controller
         }
 
         try {
-            //Create data
-
             $videoData = $request->only(['title', 'slug', 'description', 'photo', 'video', 'category_id']);
             $video = Videos::create($videoData);
             $video->tags()->attach($request->input('tags'));

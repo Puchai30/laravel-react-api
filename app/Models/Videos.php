@@ -36,5 +36,13 @@ class Videos extends Model
                 $tag_query->whereIn('name', $tags);
             });
         }
+
+        if (isset($filters['search'])) {
+            $search = $filters['search'];
+            $video_query->where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
     }
 }
